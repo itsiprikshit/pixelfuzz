@@ -104,7 +104,7 @@ for i in range(10):
     y_val = (start_y + y_padding - 10) + (height - y_padding) * val
     pyautogui.click(math.floor(x_val),math.floor(y_val))
 
-sleep(1)
+time.sleep(1)
 
 pyautogui.keyDown('ctrlleft')
 pyautogui.press('q')
