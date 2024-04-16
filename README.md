@@ -1,29 +1,36 @@
-afl director - /home/prikshit/work/AFL - ./afl-fuzz
+# Pixelfuzz
+
+## Pixelfuzz extends AFL to fuzz GUI applications
+
+afl directory - `/home/prikshit/work/asst/AFL - ./afl-fuzz`
 
 afl-fuzz.c contains codebase of afl-fuzz
 
-Compile afl-fuzz.c -> make afl-fuzz
+Compile afl-fuzz.c -> `make afl-fuzz`
 
-Projects in - /home/prikshit/work/asst
-
-Calculator directory -
-/home/prikshit/work/asst/calc
-
-Fuzzgoat directory -
-/home/prikshit/work/asst/fuzzgoat
+Projects in - `/home/prikshit/work/asst`
 
 If you open a new terminal set -
-export AFL_SKIP_CPUFREQ=1
 
-Command to run -
+`export AFL_SKIP_CPUFREQ=1`
 
-/home/prikshit/work/AFL/afl-fuzz -t 30000+ -i in -o out -g /home/prikshit/work/asst/calc/clicks.py -n -m none -- /usr/bin/gnome-calculator
+## Command to run -
 
-Tail the logs -
-tail -f -n 100 log.txt
+### Black box fuzzing with AFL -
 
-Using xwininfo -
+`afl-fuzz -t 30000+ -i in -o out -g calc/clicks.py -n -m none -- calc/gnome-calculator`
 
+### Instrumented fuzzing with AFL -
+
+`afl-fuzz -t 30000+ -i in -o out -g matefuzz/clicks.py -m none -- matefuzz/gnome-calculator`
+
+### Fuzzing in Qemu mode -
+
+`afl-fuzz -t 30000+ -i in -o out -g calc/clicks.py -Q -m none -- calc/gnome-calculator`
+
+## Using xwininfo for boundary detection -
+
+'''
 xwininfo: Window id: 0x3800004 "Calculator"
 
 Absolute upper-left X: 24
@@ -49,5 +56,6 @@ Corners: +24+54 -1004+54 -1004-305 +24-305
 
 start x location : 52
 start y location : 79
+'''
 
-For Qemu mode - add time.sleep(25)
+`For Qemu mode - add time.sleep(25)`
