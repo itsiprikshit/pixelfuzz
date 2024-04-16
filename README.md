@@ -58,4 +58,4 @@ start x location : 52
 start y location : 79
 ```
 
-`For Qemu mode - add time.sleep(25)`
+For Qemu mode - add time.sleep(25)
