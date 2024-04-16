@@ -30,7 +30,7 @@ If you open a new terminal set -
 
 ## Using xwininfo for boundary detection -
 
-'''
+```
 xwininfo: Window id: 0x3800004 "Calculator"
 
 Absolute upper-left X: 24
@@ -56,6 +56,6 @@ Corners: +24+54 -1004+54 -1004-305 +24-305
 
 start x location : 52
 start y location : 79
-'''
+```
 
 `For Qemu mode - add time.sleep(25)`
