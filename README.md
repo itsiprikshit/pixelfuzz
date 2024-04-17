@@ -14,6 +14,10 @@ If you open a new terminal set -
 
 `export AFL_SKIP_CPUFREQ=1`
 
+## Connect to display
+
+`xhost +`
+
 ## Command to run -
 
 ### Black box fuzzing with AFL -
