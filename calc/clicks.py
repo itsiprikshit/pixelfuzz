@@ -10,9 +10,9 @@ import chardet
 
 seed_path = './out/.cur_input'
 
-if len(sys.argv) > 1 and sys.argv[1] != None and sys.argv[2] != None:
-    seed_path = sys.argv[1]
-    target_program = sys.argv[2]
+if len(sys.argv) > 2 and sys.argv[1] != None and sys.argv[2] != None:
+    target_program = sys.argv[1]
+    seed_path = sys.argv[2]
 
     def task():
         os.system(target_program)
