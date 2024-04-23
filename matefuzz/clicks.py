@@ -8,11 +8,17 @@ import math
 import subprocess
 import chardet
 
-# def task():
-#     os.system("mate-calc")
+seed_path = './out/.cur_input'
 
-# process = Process(target=task)
-# process.start()
+if len(sys.argv) > 1 and sys.argv[1] != None and sys.argv[2] != None:
+    seed_path = sys.argv[1]
+    target_program = sys.argv[2]
+
+    def task():
+        os.system(target_program)
+
+    process = Process(target=task)
+    process.start()
 
 def sfc32(a, b, c, d):
     a &= 0xFFFFFFFF
@@ -79,24 +85,15 @@ def getScreenResolution():
 
 time.sleep(3)
 
-# window_coords = getWindowCoords()
-# start_x = window_coords[0]
-# start_y = window_coords[1]
-# width = window_coords[2]
-# height = window_coords[3]
-
-start_x = 50
-start_y = 114
-width = 432
-height = 245
+window_coords = getWindowCoords()
+start_x = window_coords[0]
+start_y = window_coords[1]
+width = window_coords[2]
+height = window_coords[3]
 
 y_padding = 40
 
 seed = ""
-seed_path = './out/.cur_input'
-
-if len(sys.argv) > 1 and sys.argv[1] != None:
-    seed_path = sys.argv[1]
 
 with open(seed_path, 'r', encoding='iso-8859-1') as f:
 	seed = f.read()
