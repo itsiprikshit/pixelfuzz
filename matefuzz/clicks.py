@@ -93,7 +93,12 @@ height = 245
 y_padding = 40
 
 seed = ""
-with open('./out/.cur_input', 'r', encoding='iso-8859-1') as f:
+seed_path = './out/.cur_input'
+
+if len(sys.argv) > 1 and sys.argv[1] != None:
+    seed_path = sys.argv[1]
+
+with open(seed_path, 'r', encoding='iso-8859-1') as f:
 	seed = f.read()
 
 random_number = generateRandomNumber(seed)
