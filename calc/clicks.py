@@ -8,11 +8,17 @@ import math
 import subprocess
 import chardet
 
-# def task():
-#     os.system("/usr/bin/gnome-calculator")
+seed_path = './out/.cur_input'
 
-# process = Process(target=task)
-# process.start()
+if len(sys.argv) > 1 and sys.argv[1] != None and sys.argv[2] != None:
+    seed_path = sys.argv[1]
+    target_program = sys.argv[2]
+
+    def task():
+        os.system(target_program)
+
+    process = Process(target=task)
+    process.start()
 
 def sfc32(a, b, c, d):
     a &= 0xFFFFFFFF
@@ -77,37 +83,33 @@ def getScreenResolution():
     resol_value_split = resol_value.split('x')
     return int(resol_value_split[0])
 
-time.sleep(2)
+time.sleep(3)
 
-# window_coords = getWindowCoords()
-# start_x = window_coords[0]
-# start_y = window_coords[1]
-# width = window_coords[2]
-# height = window_coords[3]
+window_coords = getWindowCoords()
+start_x = window_coords[0]
+start_y = window_coords[1]
+width = window_coords[2]
+height = window_coords[3]
 
-start_x = 24
-start_y = 54
-width = 412
-height = 541
+y_padding = 40
 
 seed = ""
-with open('./out/.cur_input', 'r', encoding='iso-8859-1') as f:
+
+with open(seed_path, 'r', encoding='iso-8859-1') as f:
 	seed = f.read()
 
+# Add a sleep when running in Qemu mode because the target program takes a lot of time to open
 # time.sleep(25)
 
 random_number = generateRandomNumber(seed)
 
 for i in range(20):
     val = random_number()
-    # x_val = 63 + 390 * val
-    # y_val = 360 + 230 * val
-    # pyautogui.click(math.floor(x_val),math.floor(y_val))
     x_val = (start_x - 10) + width * val
-    y_val = (start_y - 10) + height * val
+    y_val = (start_y + y_padding - 10) + (height - y_padding) * val
     pyautogui.click(math.floor(x_val),math.floor(y_val))
 
-# pyautogui.click(386,100)
+time.sleep(1)
 
 pyautogui.keyDown('ctrlleft')
 pyautogui.press('q')

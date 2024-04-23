@@ -98,9 +98,12 @@ seed = ""
 with open(seed_path, 'r', encoding='iso-8859-1') as f:
 	seed = f.read()
 
+# Add a sleep when running in Qemu mode because the target program takes a lot of time to open
+# time.sleep(25)
+
 random_number = generateRandomNumber(seed)
 
-for i in range(10):
+for i in range(20):
     val = random_number()
     x_val = (start_x - 10) + width * val
     y_val = (start_y + y_padding - 10) + (height - y_padding) * val
