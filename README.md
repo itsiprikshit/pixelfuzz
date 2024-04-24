@@ -86,7 +86,7 @@ The command that gets the active GUI dimensions:
 `xwininfo -id $(xdotool getactivewindow)`
 
 Every click needs an x and y coordinate, hence <br>
-`x * coord = start_x + width * random*number`<br>
+`x_coord = start_x + width * random_number`<br>
 `y_coord = start_y + height * random_number`
 
 Once all the 10 random numbers are converted to clicks, we close the application by providing keyboard input, i.e., `CTRL + Q`.
