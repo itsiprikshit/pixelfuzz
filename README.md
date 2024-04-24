@@ -40,7 +40,7 @@ The path to the Python script is passed as an argument to afl-fuzz using the `-g
 if (gui_mode) {
     python_pid = fork();
     if (!python_pid) {
-        char \*pargs[] = {"/usr/bin/python3", gui_dir, NULL};
+        char *pargs[] = {"/usr/bin/python3", gui_dir, NULL};
         execv("/usr/bin/python3", pargs);
         exit(0);
     }
@@ -107,13 +107,11 @@ You can find the interaction script [here](https://github.com/itsiprikshit/pixel
 
 Before starting the fuzzing campaign, we had to run the following commands to set the fuzzing -
 
-We exported the `AFL_SKIP_CPUFREQ=1` to skip the check for the CPU scaling policy.
-
-Disabled sending core dump notifications by running the following command - <br>
-`sudo bash -c 'echo core > /proc/sys/kernel/core_pattern'`<br>
-
-Finally, we fuzzed the target program as the root user due to some restrictions of pyautogui, which requires root access.
-To authorize pyautogui to connect to the display, we ran the following command - `xhost +`
+-   We exported the `AFL_SKIP_CPUFREQ=1` to skip the check for the CPU scaling policy.
+-   Disabled sending core dump notifications by running the following command - <br>
+    `sudo bash -c 'echo core > /proc/sys/kernel/core_pattern'`<br>
+-   Finally, we fuzzed the target program as the root user due to some restrictions of pyautogui, which requires root access.
+-   To authorize pyautogui to connect to the display, we ran the following command - `xhost +`
 
 You can now run the target program (the GUI application) by running the following command in your terminal - <br>
 
