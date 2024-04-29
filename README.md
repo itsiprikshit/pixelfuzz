@@ -139,12 +139,12 @@ Out of the two target programs, the mate calculator was instrumented with `afl-g
 
 We ran the GUI fuzzer in three different modes -<br>
 
--   Dumb mode (black box fuzzing) - enabled using the -n flag
+-   Dumb mode (black box fuzzing) - enabled using the -n flag <br>
     `afl-fuzz -t 30000+ -i in -o out -g clicks.py -n -m none -- gnome-calculator`
 
-*   Qemu mode - enabled using the -Q flag
+*   Qemu mode - enabled using the -Q flag <br>
     `afl-fuzz -t 30000+ -i in -o out -g calc/clicks.py -Q -m none -- calc/gnome-calculator`
-*   Instrumented mode
+*   Instrumented mode <br>
     `afl-fuzz -t 30000+ -i in -o out -g matefuzz/clicks.py -m none -- mate-calc`
 
 Surprisingly, we found a bug in `mate-calc`, which we ran in instrument mode. To learn more about the bug, we replayed the crash on the mate calculator.
